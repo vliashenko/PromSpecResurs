@@ -40,46 +40,51 @@
 
 <body>
   <div class="wrapper">
-    <header class="header">
+    <header class="header" >
       <div class="header__container ">
-        <a href="#" class="header__logo">TOВ <span>Промспецресурс</span></a>
+        <a href="#Main" class="header__logo">TOВ <span>Промспецресурс</span></a>
         <nav class="header__menu menu _container">
           <ul class="menu__list">
             <li class="menu__item">
-              <a href="#" class="menu__link">Послуги</a>
+              <a href="#Services" class="menu__link">Послуги</a>
             </li>
             <li class="menu__item">
-              <a href="#" class="menu__link">Проєкти</a>
+              <a href="#Generators" class="menu__link">Генератори</a>
             </li>
             <li class="menu__item">
-              <a href="#" class="menu__link">Про компанію</a>
+              <a href="#AboutCompany" class="menu__link">Про компанію</a>
             </li>
             <li class="menu__item">
-              <a href="#" class="menu__link">Контакти</a>
+              <a href="#Quotes" class="menu__link">Відгуки</a>
+            </li>
+            <li class="menu__item">
+              <a href="#Contacts" class="menu__link">Контакти</a>
             </li>
             <li class="menu__item_phone">
               <a href="tel:+380934337489" class="menu__link">+38 (093) 433-74-89</a>
             </li>
             <li class="menu__item">
-              <a href="#" class=" header__button">Замовити консультацію</a>
+              <a href="#Form" class=" header__button">Замовити консультацію</a>
             </li>
           </ul>
         </nav>
         <div id="mySidenav" class="sidenav">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <a href="#">Головна</a>
-          <a href="#">Послуги</a>
-          <a href="#">Проєкти</a>
-          <a href="#">Про компанію</a>
-          <a href="#">Контакти</a>
-          <a href="#" class="MySidenav__button">Замовити консультацію</a>
+          <a href="#Main">Головна</a>
+          <a href="#Services">Послуги</a>
+          <a href="#Generators">Генератори</a>
+          <a href="#AboutCompany">Про компанію</a>
+          <a href="#Quotes">Відгуки</a>
+          <a href="#Contacts">Контакти</a>
+          <a href="#" class="MySidenav__button  formBtn">Замовити консультацію</a>
         </div>
         <span class="mySidenav__icon" onclick="openNav()">&#9776;</span>
     </header>
-    <main class="page">
-      <div class="page__main-block main-block">
+    
+    <main class="page" >
+      <div class="page__main-block main-block" >
         <div class="main-block__container _container">
-          <div class="main-block__body">
+          <div class="main-block__body" id="Main">
             <h1 class="main-block__title">Проектування та монтаж систем гарантованого энергозабезпечення</h1>
             <div class="main-block__text">Під ключ: обладнання + монтаж + обслуговування</div>
             <div class="main-block__subtext">
@@ -93,8 +98,8 @@
               </nav>
             </div>
             <div class="main-block__buttons">
-              <a href="#" class="main-block__button main-block__button_blue">Замовити консультацію</a>
-              <a href="#" class="main-block__button main-block__button_border">Розрахувати вартість</a>
+              <a href="#" class="main-block__button main-block__button_blue formBtn">Замовити консультацію</a>
+              <a href="#" class="main-block__button main-block__button_border formBtn">Розрахувати вартість</a>
             </div>
           </div>
         </div>
@@ -116,7 +121,7 @@
           </div>
         </div>
       </section>
-      <section class="page__services-main">
+      <section class="page__services-main" id="Services">
         <div class="services__container _container">
           <div class="services__body">
             <div class="services__item_card">
@@ -127,7 +132,10 @@
                   Постачання та монтаж систем безперебійного живлення на базі інверторних
                   перетворювачів та акамуляторних батарей.</p>
               </div>
-              <div class="item_card__text">Поставка та монтаж систем гарантованого електропостачання</div>
+              <div class="item_card__text">Поставка та монтаж систем гарантованого електропостачання
+                <a href="#Generators">
+                  <div class="button__toGen"><i class="fa fa-angle-down"></i></div>
+              </a></div>
             </div>
             <div class="services__item_card">
               <div class="item_card__photo">
@@ -169,21 +177,26 @@
             <div class="services__item_card">
               <div class="item_card__photo">
                 <img src="media/Circontrol-WallBox-eHome.jpg" alt="">
-                <p class="cap">Монтаж зарядних станцій для електромобілів</p>
+                <p class="cap">Монтаж зарядних станцій для електромобілів. 
+                  Також у нас можна замовити зарядні станції та деякі комплектуючі!</p>
               </div>
-              <div class="item_card__text">Монтаж зарядних станцій для електромобілів</div>
+              <div class="item_card__text">Монтаж зарядних станцій для електромобілів
+                <a href="#Chargers">
+                  <div class="button__toGen"><i class="fa fa-angle-down"></i></div>
+              </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="page__gallery">
+      <section class="page__gallery" id="Generators">
         <div class="page-gallery main-gallery">
           <div class="main-gallery__containers _container">
             <div class="main-gallery__body">
               <div class="main-services__body_texts">
                 <span class="_line">|</span>
                 <h2 class="services-main__title">Генератори</h2>
-                <div class="servives-main__text">За наявністю телефонуйте або заповніть форму на сайті для зворотноього
+                <div class="servives-main__text">За наявністю, та додатковою інформацією телефонуйте або заповніть форму на сайті для зворотноього
                   зв'язку!</div>
               </div>
               <div class="main-gallery__button_container">
@@ -197,6 +210,9 @@
                 <div class="main-gallery__column">
                 </div>
               </div>
+              <div class="gallery-main__button_bottom formBtn">
+                <a href="#" type="submit">Отримати консультацію</a>
+              </div>
               <div class="modalPic">
                 <div class="modal__dialogPic">
                   <div class="modal__contentPic">
@@ -209,6 +225,27 @@
                         </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+      <section class="page__gallery" id="Chargers">
+        <div class="page-gallery main-gallery">
+          <div class="main-gallery__containers _container">
+            <div class="main-gallery__body">
+              <div class="main-services__body_texts">
+                <span class="_line">|</span>
+                <h2 class="services-main__title">Зарядні Станції</h2>
+                <div class="servives-main__text">За наявністю, та додатковою інформацією телефонуйте або заповніть форму на сайті для зворотноього
+                  зв'язку!</div>
+              </div>
+                <div class="main-gallery__gallery_container"> 
+                  <div class="main-gallery__column chargers">
+                  </div>
+                </div>
+                <div class="gallery-main__button_bottom  formBtn">
+                  <a href="#" type="submit">Отримати консультацію</a>
                 </div>
               </div>
             </div>
@@ -241,7 +278,7 @@
                       можливості підключитися до стаціонарної мережі, або спостерігаються раптові та часті обриви
                       електромереж.</p>
                     <div class="profile-bio__button-container">
-                      <button class="profile-bio__button">Замовити консультацію</button>
+                      <button class="profile-bio__button formBtn">Замовити консультацію</button>
                     </div>
                   </div>
                 </div>
@@ -264,7 +301,7 @@
                       подібних
                       систем єлектропостачання.</p>
                     <div class="profile-bio__button-container">
-                      <button class="profile-bio__button">Замовити консультацію</button>
+                      <button class="profile-bio__button  formBtn">Замовити консультацію</button>
                     </div>
                   </div>
                 </div>
@@ -287,7 +324,7 @@
                       потужний
                       двигун, який не потребує частих пауз для охолодження.</p>
                     <div class="profile-bio__button-container">
-                      <button class="profile-bio__button">Замовити консультацію</button>
+                      <button class="profile-bio__button formBtn">Замовити консультацію</button>
                     </div>
                   </div>
                 </div>
@@ -325,7 +362,7 @@
           </div>
         </div>
       </section>
-      <section class="page__abotUs">
+      <section class="page__abotUs" id="AboutCompany">
         <div class="aboutUs-main__container _container">
           <div class="aboutUs-main__body">
             <div class="main-services__body_texts">
@@ -368,7 +405,9 @@
                 - Київське вище професійне училище залізничного транспорту імені В.С.Кудряшова<br>
                 - Національний університет оборони України імені Івана Черняховського<br>
               </div>
+              
             </div>
+            
           </div>
         </div>
       </section>
@@ -391,6 +430,7 @@
               </div>
             </div>
           </div>
+          
         </div>
       </section>
       <section class="page__questions">
@@ -514,7 +554,7 @@
 
           </div>
       </section>
-      <section class="page__quotes">
+      <section class="page__quotes" id="Quotes">
         <div class="quotes-main__container">
           <div class="quotes-main__body">
             <!-- Slideshow container -->
@@ -577,7 +617,7 @@
           </div>
         </div>
       </section>
-      <section class="page__form">
+      <section class="page__form" id="Form">
         <div class="form-main__container">
           <div class="body__container ">
             <h2 class="products-main__title">Залишилися питання?</h2>
@@ -620,8 +660,44 @@
         </div>
   </div>
   </div>
+  <div class="modalForm">
+    <div class="modal__dialogForm">
+        <div class="modal__contentForm">
+          
+          
+            <form action="#">
+              <div class="form-main__form-column">
+                <div  class="modal__closeForm">&times;</div>
+                <div class="input__container_top">
+                  <p>Ім'я*</p>
+                  <input type="text" id="form_input" class="form-main__input" placeholder="Іван Іванович">
+                </div>
+                <div class="input__container_top">
+                  <p>Email*</p>
+                  <input type="text" id="form_input" class="form-main__input" placeholder="example@mail.com">
+                </div>
+                <div class="input__container_top">
+                  <p>Телефон*</p>
+                  <input type="text" id="form_input" class="form-main__input" placeholder="+380688485643">
+                </div>
+              </div>
+
+              <div class="input__container_bottom">
+                <p>Повідомлення</p>
+                <input type="text" id="form_input" class="form-main__input_bottom"
+                  placeholder="Пишіть все, що думаєте">
+              </div>
+              <div class="form-main__button_bottom">
+                <p>Натискаючи на кнопку, ви погоджуєтеся на обробку персональних даних</p>
+                <a href="#" type="submit">Отримати консультацію</a>
+              </div>
+          
+          </form>
+        </div>
+        </div>
+    </div>
   </section>
-  <section class="page__information">
+  <section class="page__information" >
     <div class="information-main__container _container">
       <div class="information-main__body">
         <div class="main-services__body_texts">
@@ -629,7 +705,7 @@
           <h2 class="services-main__title">Контакти</h2>
           <div class="servives-main__text">Зв'яжіться з нами</div>
         </div>
-        <div class="information-body__columns">
+        <div class="information-body__columns"  id="Contacts">
           <div class="information-body__firstCol">
             <div class="firstCol__phones">
               <p>Зв'язок з нами:</p>
@@ -654,6 +730,7 @@
         </div>
       </div>
     </div>
+  </div>
   </section>
   </main>
   <footer class="footer-distributed _container">
@@ -662,9 +739,10 @@
       <p class="footer-links">
         <a href="#" class="link-1 link_link">Головна</a>
         <a href="#">Послуги</a>
-        <a href="#">Проєкти</a>
+        <a href="#Generators">Генератори</a>
         <a href="#">Про компанію</a>
-        <a href="#">Контакти</a>
+        <a href="#Quotes">Відгуки</a>
+        <a href="#Contacts">Контакти</a>
       </p>
       <p class="footer-company-name">ТОВ Промспецресурс © 2014-2021 Вулиця Вячеслава Черновола 33, код ЄДРПОУ 39053657
       </p>
