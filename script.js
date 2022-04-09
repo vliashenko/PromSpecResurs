@@ -22,7 +22,7 @@ const modalContainer = document.querySelector('.modal__contentPic')
 const modal = document.querySelector(".modalPic"),
     modalCloseBtnSubmit = document.querySelector(".btn_minPic");
     
-
+//---Generators DB-----------------------------------------------------------------
 const portativeGenDB = [{
         src: "infoMedia/G_B-2500-min.jpg",
         info: "infoMedia/B-2500-min.jpeg",
@@ -284,37 +284,45 @@ const portativeGenDB = [{
     }
     
 ]
-
+//---Chargers DB-----------------------------------------------------------------
 const chargersDB = [
     {
         src: "media/Circontrol-WallBox-eHome.jpg",
-        info: "infoMedia/E-HOME-min.jpeg",
+        info: "infoMedia/EHOME1-min.jpeg",
+        info2: "infoMedia/EHOME2-min.jpeg",
         power: "",
         model: "eHome AC Wall Box",
         type: "charger"
     },
     {
         src: "infoMedia/M_ENEXT-AC-min.jpg",
-        info: "infoMedia/ENEXT-min.jpeg",
+        info: "infoMedia/ENEXT1-min.jpeg",
+        info2: "infoMedia/ENEXT2-min.jpeg",
         power: "",
         model: "CIRCONTROL ENEXT AC",
         type: "charger"
     },
     {
         src: "infoMedia/EVE.webp",
-        info: "infoMedia/EVE-min.jpeg",
+        info: "infoMedia/EVE1-min.jpeg",
+        info2: "infoMedia/EVE2-min.jpeg",
         power: "",
         model: "ALFEN EVE SINGLE PRO-LINE AC",
         type: "charger"
     },
     {
         src: "infoMedia/M_INCH-min.png",
-        info: "infoMedia/INCH-min.jpeg",
+        info: "infoMedia/INCH1-min.jpeg",
+        info2: "infoMedia/INCH2-min.jpeg",
         power: "",
         model: "ETREL INCH",
         type: "charger"
     },
 ]
+//---------------------------------------------------------------------------------
+
+
+
 
 fillTemplate(portativeGenDB, chargersDB)
 genFilterByValueTwo(301, 66);
@@ -436,7 +444,7 @@ function createTemplate(src, power, model, index, name) {
 function checker2(index) {
 
     let pics = document.querySelector('.imagesS')
-    
+    let pics2 = document.querySelector('.imagesSS')
     openModal();
 
     for(let i = 0; i < chargersDB.length; i++){
@@ -445,7 +453,12 @@ function checker2(index) {
 
         if(i === index) {
             pics.src = charger.info 
+            pics2.src = charger.info2
+            pics2.classList.remove('hide')
         }
+                
+               
+            
     }
 
 }
@@ -453,7 +466,7 @@ function checker2(index) {
 function checker(j) {
 
     let pics = document.querySelector('.imagesS')
-    
+    let pics2 = document.querySelector('.imagesSS')
     openModal();
     
     for (let i = 0; i < portativeGenDB.length; i++) {
@@ -461,6 +474,7 @@ function checker(j) {
         
         if (i === j) {
             pics.src = gen.info
+            pics2.classList.add('hide')
         }
             
         
@@ -584,8 +598,125 @@ function showSlides(n) {
     dots[slideIndex - 1].className += " active";
 }
 //-------Form Send-------------------------------------------
+let submitFormBtns = document.querySelectorAll('.submitFormBtn');
+
+let modalFormWindow = document.querySelector('.modal__contentForm');
+let formWindowMain = document.querySelector('.form-main__form');
 
 
+
+function changeTemplateSuccess(window){
+    window.classList.add('successWindow')
+    window.innerHTML = `Заявка Успішно прийнята! Невдовзі з вами зв'яжуться. Дякуємо!`
+}
+
+
+function FormSend(data) {
+    
+    fetch("send.php", {
+        method: "POST",
+        body: data,
+    }).then(response => response.json())
+    .then(data=>{
+       console.log(data);
+    //changeTemplateSuccess(formWindowMain)
+    //changeTemplateSuccess(modalFormWindow)  
+    })
+}
+
+submitFormBtns.forEach((btn, index) => {
+    if(index === 0) {
+        btn.addEventListener('click',(e)=> {
+        e.preventDefault();
+        checkDataInput()
+        })
+    }
+    if(index === 1) {
+            btn.addEventListener('click',(e)=> {
+            e.preventDefault();
+            checkDataInputModal()
+        })
+    }
+})
+
+function inputChecker(func, inputName) {
+    if(!func(inputName.value)){
+        inputName.style.borderBottom = "solid red";
+        inputName.classList.add("invalidInput")
+        return false
+
+    } else {
+        inputName.style.borderBottom = "solid green";
+        return true
+    }
+    
+}
+
+function textInputChecker(inputName) {
+    let field = inputName.value
+
+    if(field.length === 0) {
+        return "Прошу зателефонувати мені з приводу консультації"
+    } else {
+        return field
+    }
+}
+
+function checkDataInputModal() {
+    const formInputs = document.querySelectorAll('.form-main__input');
+    const formInputsText = document.querySelectorAll('.form-main__input_bottom');
+
+    let trueOrFalse;
+    
+    formInputs.forEach((inputField,index) => {
+        if( index === 3){
+            inputChecker(nameCheck,inputField)? trueOrFalse = true : trueOrFalse = false
+        }
+         if ( index === 4){
+            inputChecker(validateEmail,inputField)? trueOrFalse = true : trueOrFalse = false  
+        } 
+         if ( index === 5){
+            inputChecker(numberChecker,inputField)? trueOrFalse = true : trueOrFalse = false
+        }
+        
+    })
+
+    let modalTextField = formInputsText[1];
+    textInputChecker(modalTextField)
+
+    trueOrFalse? FormSend(JSON.stringify({name: formInputs[3].value,email: formInputs[4].value, phone: formInputs[5].value, text: formInputsText[1].value})) : console.log('error');
+        
+}
+
+function checkDataInput() {
+    const formInputs = document.querySelectorAll('.form-main__input');
+    const formInputsText = document.querySelectorAll('.form-main__input_bottom');
+
+    let trueOrFalse;
+
+    formInputs.forEach((inputField,index) => {
+        if(index === 0){
+            inputChecker(nameCheck,inputField) ? trueOrFalse = true : trueOrFalse = false
+        }
+         if (index === 1){
+            inputChecker(validateEmail,inputField) ? trueOrFalse = true : trueOrFalse = false
+        } 
+         if (index === 2){
+            inputChecker(numberChecker,inputField) ? trueOrFalse = true : trueOrFalse = false
+        }  
+
+    })
+    let modalTextField = formInputsText[0];
+    textInputChecker(modalTextField)
+
+    trueOrFalse? FormSend(JSON.stringify({name: formInputs[0].value,email: formInputs[1].value, phone: formInputs[2].value, text: formInputsText[0].value})) : console.log('error');
+}
+
+//-----Validation RegeX-------------------------------------------------------------------------
+const validateEmail = (email) => {
+    let isEmail =  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)
+    return isEmail; 
+};
 
 function telephoneCheck(str) {
     let isPhone = /^[+]\d+$/.test(str);
@@ -598,19 +729,23 @@ function telephoneCheck(str) {
     }
 }
 
+function numberChecker(str){
+    let isPhone = /^[+1-9]\d+$/.test(str);
+    return isPhone
+}
+
 function nameCheck(str) {
-    let isName = /^[А-ЩЬЮЯҐЄІЇЫЭЪЁа-щьюяґєіїыэъё.,'!?-]+/.test(str);
+    let isName = /^[А-ЩЬЮЯҐЄІЇЫЭЪЁA-Za-zа-щьюяґєіїыэъё.,'!?-]+/.test(str);
     return isName;
 }
 
+//---------------------------------------------------------------------------------------------------------
+
 const modalTriggers = document.querySelectorAll(".formBtn"),
   modalForm = document.querySelector(".modalForm"),
-  formSubmit = document.querySelector("#formSubmit"),
   modalCloseBtnForm = document.querySelector(".modal__closeForm");
 
-// modalTrigger.addEventListener("click", openModal);
 
-// modalCloseBtnSubmit.addEventListener('click', closeModal)
 
 
 modalTriggers.forEach(btn => {

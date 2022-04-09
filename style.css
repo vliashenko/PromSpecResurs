@@ -117,6 +117,7 @@ body {
   line-height: 1.5;
   letter-spacing: 0.2px;
   margin: 0px 0px 0px 20px;
+  width: 10%;
 }
 
 .header__logo > span {
@@ -127,6 +128,7 @@ body {
   .header__logo {
     font-size: 14px;
     padding: 5px;
+    width: 100%;
   }
 }
 
@@ -210,17 +212,13 @@ body {
   box-shadow: 1px 2px 5px #000000;
 }
 
-@media(max-width:1372px) {
-  .header__button {
-    font-size: 14px;
-  }
-}
-
-@media(max-width:1336px) {
+@media(max-width:1472px) {
   .header__button {
     display: none;
   }
 }
+
+
 
 /*------SideNav--------------------------------------------------------------------*/
 .mySidenav__icon {
@@ -341,7 +339,7 @@ body {
 }
 
 .main-block__body {
-  padding: 0px 0px 65px 0px;
+  padding: 60px 0px 65px 0px;
   position: relative;
   z-index: 2;
   max-width: 659px;
@@ -372,10 +370,12 @@ body {
 
 @media(max-width:600px) {
   .main-block__body {
-    padding: 75px 0px 60px 0px;
+    padding: 35px 0px 60px 0px;
   }
 }
-
+.hidden {
+  visibility: hidden;
+}
 .main-block__title {
   font-size: 42px;
   font-weight: 700;
@@ -747,6 +747,11 @@ body {
   height: 100%;
   
 }
+.imagesSS {
+  margin-top: 60px;
+  width: 100%;
+  height: 100%;
+}
 .imageContainer {
   margin: 0 auto;
   width: 700px;
@@ -764,7 +769,7 @@ body {
   .imageContainer {
     margin: 0 auto;
     width: 320px;
-    height: 300px;
+    height: 400px;
   }
 }
 .main-gallery_image:hover {
@@ -1690,12 +1695,13 @@ q {
   .form-main__button_bottom>p {
     justify-content: center;
     margin: 0px 20px 20px 0px;
+    text-align: center;
   }
 }
 
 @media(max-width: 611px) {
   .form-main__button_bottom>p {
-    margin: 0px 0px 20px 0px;
+    margin: 0px 40px 20px 30px;
   }
 }
 
@@ -2357,13 +2363,7 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFBC64", en
   }
 }
 
-.show {
-  display: block;
-}
 
-.hide {
-  display: none;
-}
 
 .fade {
   animation-name: fade;
@@ -2605,5 +2605,24 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFBC64", en
   to {
     opacity: 1;
   }
+}
+
+.invalidInput {
+ animation: shake 300ms;
+}
+@keyframes shake {
+    25%{ transform: translateX(4px); }
+    50%{ transform: translateX(-4px); }
+    100%{ transform: translateX(4px); }
+}
+
+.successWindow {
+    text-align: center;
+    font-size: 24px;
+    position: relative;
+    bottom: 20px;
+    font-weight: 700;
+    color: #ffb100;
+    text-shadow: 0px 2px 4px black;
 }
 /*--------------------------------------------------------------------*/
