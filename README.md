@@ -1,6 +1,6 @@
 # PromSpecResurs
 A responsive web-page for the Ukrainian Electicity ТОВ"Компанія Промспецресурс".
-HTML,CSS,JS,PHP,GoogleMapAPI,Figma,FontAwesome.
+HTML,CSS,JS,PHP,GoogleMapAPI,Figma,FontAwesome.<br>
 
 Features: {
 animationMain : textReveal animation of every element on page(using Window.innerWidth and Client.innerWidth), 
