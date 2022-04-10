@@ -2162,6 +2162,23 @@ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FFBC64", en
   font-family: Oswald;
   width: 150%;
 }
+
+.title-reveal {
+  opacity: 0;
+  animation: revealText .5s forwards;
+  animation-delay: .275s;
+}
+
+@keyframes revealText {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media(max-width: 550px){
   .title-main__firstCol {
       font-size: 28px;

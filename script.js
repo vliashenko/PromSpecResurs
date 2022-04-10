@@ -545,7 +545,93 @@ function check() {
     }
 }
 
+const mainBlock = document.querySelector('.main-block__body')
+const titleMainText = document.querySelector('.title-main__firstCol');
+const titleMainSubText = document.querySelector('.title-main__secondCol');
+const serviceItemCards = document.querySelectorAll('.services__item_card');
+const mainServicesText = document.querySelectorAll('.main-services__body_texts');
+const galleryBtns = document.querySelector('.main-gallery__button_container')
+const galleryItems = document.querySelectorAll('.main-gallery__item')
+const formBtns = document.querySelectorAll('.formBtn')
+const productsTitle = document.querySelector('.products-main__text_container')
+const productsCards = document.querySelectorAll('.products-main__cards')
+const pageCounter = document.querySelector('.page__counter')
+const aboutUsPhotos = document.querySelectorAll('.aboutUs-main__photo')
+const aboutUsText = document.querySelector('.aboutUs-main__text')
+const aboutUsSubtext = document.querySelector('.aboutUs-main__subtext')
+const ratingIcons = document.querySelectorAll('.rating-main__item')
+const accordionItems = document.querySelectorAll('.accordion-item')
+const formTitle = document.querySelector('.body__container')
+const formBody = document.querySelector('.form-main__body')
+const footerPart1 = document.querySelector('.footer-left')
+const footerPart2 = document.querySelector('.footer-center')
+const footerPart3 = document.querySelector('.footer-right')
+
+
+let qSelector = [ 
+    titleMainText, 
+    titleMainSubText, 
+    galleryBtns, 
+    productsTitle,
+    pageCounter,
+    aboutUsText,
+    aboutUsSubtext,
+    formTitle,
+    formBody,
+    footerPart1,
+    footerPart2,
+    footerPart3
+];
+
+let qSelectorAll = [
+    serviceItemCards, 
+    mainServicesText,
+    galleryItems, 
+    formBtns, 
+    productsCards,
+    aboutUsPhotos,
+    ratingIcons,
+    accordionItems,   
+];
+
+textReveal(mainBlock)
+
+function textReveal (element) {
+
+    let windowHeight = window.innerHeight;
+
+    let position = element.getBoundingClientRect().top
+    
+     if(position - windowHeight <= 0) {
+        element.classList.add('title-reveal');
+        window.removeEventListener('scroll', textReveal);
+    }
+
+}
+
+
 window.addEventListener('scroll', check);
+
+function callWindowEventSingle(arr) {
+    arr.forEach(element => {
+        window.addEventListener('scroll', ()=> {
+            textReveal(element)
+        })
+    })
+}
+
+function callWindowEventNotSingle(arr) {
+    arr.forEach(element => {
+        element.forEach(item => {
+            window.addEventListener('scroll', ()=> {
+            textReveal(item)
+        })
+        })       
+    })
+}
+
+callWindowEventSingle(qSelector)
+callWindowEventNotSingle(qSelectorAll)
 
 //-----Accordion--------------------------------------------------------------------------
 
@@ -742,6 +828,7 @@ function nameCheck(str) {
 //---------------------------------------------------------------------------------------------------------
 
 const modalTriggers = document.querySelectorAll(".formBtn"),
+ modalTriggers2 = document.querySelectorAll(".formBtn2"),
   modalForm = document.querySelector(".modalForm"),
   modalCloseBtnForm = document.querySelector(".modal__closeForm");
 
@@ -755,6 +842,12 @@ modalTriggers.forEach(btn => {
     })
 })
 
+modalTriggers2.forEach(btn => {
+    btn.addEventListener('click',(e)=> {
+        e.preventDefault();
+        openModalForm()
+    })
+})
 function closeModalForm() {
     modalForm.classList.add("hide");
     modalForm.classList.remove("show");
