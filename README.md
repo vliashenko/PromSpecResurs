@@ -1,5 +1,5 @@
 # PromSpecResurs
-A responsive web-page for the Ukrainian Electicity ТОВ"Компанія Промспецресурс".
+A responsive web-page for the Ukrainian Electicity ТОВ"Компанія Промспецресурс".<br>
 HTML,CSS,JS,PHP,GoogleMapAPI,Figma,FontAwesome.<br>
 
 Features: {<br>
