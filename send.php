@@ -3,10 +3,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $input = json_decode(file_get_contents("php://input"), true);
 
-    $to = "mariiapsychology@gmail.com";
-    $from = "upload@mashovets-psychologist <NO_REPLAY@mashovets-psychologist.com>";
-    $subject = "Заповнена форма для зворотьного зв'язку на сайті";
-    $message = "Имя: ".$input['name'].",\r\n телефон: ".$input['email'],\r\n телефон: ".$input['phone'],\r\n телефон: ".$input['text'];
+    $to = "greedisdood1@gmail.com";
+    $from = "upload@generator-servis.kyiv.ua <NO_REPLAY@generator-servis.kyiv.ua>";
+    $subject = "Заполнена форма на сайте";
+    $message = "Надсилач: ".$input['name'].",\r\n Пошта: ".$input['email'].",\r\n Телефон: ".$input['phone'].", \r\n Повідомлення: ".$input['text'];
     
     $headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";

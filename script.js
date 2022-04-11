@@ -1,13 +1,20 @@
 //----SideNav------------------------------------------------------------------
+
+
+function toggleNavBar() {
+    if(document.getElementById("mySidenav").style.width == 0 || document.getElementById("mySidenav").style.width == "0px"){
+        openNav()
+    } else {
+        closeNav()
+    }
+}
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "230px";
 }
-
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
-//---Services hover----------------------------------------------------------------
-
 
 //-----Gallery---------------------------------------------------------------------
 const container = document.querySelector('.main-gallery__column');
@@ -696,19 +703,29 @@ function changeTemplateSuccess(window){
     window.innerHTML = `Заявка Успішно прийнята! Невдовзі з вами зв'яжуться. Дякуємо!`
 }
 
+function changeTemplateFailed(window){
+    window.classList.add('successWindow')
+    window.innerHTML = `Помилка з'єднання з сервером, спробуйте пізніше. Дякуємо!`
+}
 
 function FormSend(data) {
     
     fetch("send.php", {
         method: "POST",
         body: data,
-    }).then(response => response.json())
-    .then(data=>{
-       console.log(data);
-    //changeTemplateSuccess(formWindowMain)
-    //changeTemplateSuccess(modalFormWindow)  
+    }).then(res => res.json())
+    .then(data=> {
+        if( data.status === 0) {
+            changeTemplateSuccess(modalFormWindow) 
+            changeTemplateSuccess(formWindowMain) 
+        } else {
+            changeTemplateFailed(modalFormWindow) 
+            changeTemplateFailed(formWindowMain) 
+        }
     })
 }
+
+
 
 submitFormBtns.forEach((btn, index) => {
     if(index === 0) {
@@ -741,12 +758,14 @@ function inputChecker(func, inputName) {
 function textInputChecker(inputName) {
     let field = inputName.value
 
-    if(field.length === 0) {
+    if(field.length < 1) {
         return "Прошу зателефонувати мені з приводу консультації"
     } else {
         return field
     }
 }
+
+
 
 function checkDataInputModal() {
     const formInputs = document.querySelectorAll('.form-main__input');
@@ -768,9 +787,16 @@ function checkDataInputModal() {
     })
 
     let modalTextField = formInputsText[1];
-    textInputChecker(modalTextField)
 
-    trueOrFalse? FormSend(JSON.stringify({name: formInputs[3].value,email: formInputs[4].value, phone: formInputs[5].value, text: formInputsText[1].value})) : console.log('error');
+    let textValue = textInputChecker(modalTextField)
+
+    trueOrFalse? FormSend(
+        JSON.stringify({
+            name: formInputs[3].value,
+            email: formInputs[4].value, 
+            phone: formInputs[5].value, 
+            text: textValue
+    })) : console.log('error');
         
 }
 
@@ -793,9 +819,10 @@ function checkDataInput() {
 
     })
     let modalTextField = formInputsText[0];
-    textInputChecker(modalTextField)
 
-    trueOrFalse? FormSend(JSON.stringify({name: formInputs[0].value,email: formInputs[1].value, phone: formInputs[2].value, text: formInputsText[0].value})) : console.log('error');
+    let textValue = textInputChecker(modalTextField)
+
+    trueOrFalse? FormSend(JSON.stringify({name: formInputs[0].value,email: formInputs[1].value, phone: formInputs[2].value, text: textValue})) : console.log('error');
 }
 
 //-----Validation RegeX-------------------------------------------------------------------------
